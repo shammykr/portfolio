@@ -24,10 +24,10 @@ body {
 .header {
     background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
     color: white;
-    padding: 100px 0 80px;
+    padding: 10px 0 10px;
     position: relative;
     overflow: hidden;
-    min-height: 70vh;
+    min-height: auto;
     display: flex;
     align-items: center;
 }
