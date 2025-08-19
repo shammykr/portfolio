@@ -5,418 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shammy Kumar - Software Engineer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            box-shadow: 0 0 30px rgba(0,0,0,0.1);
-            min-height: 100vh;
-        }
-
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(255,255,255,0.1)"><polygon points="0,0 1000,100 1000,0"/></svg>');
-            background-size: cover;
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 1;
-            padding: 0 40px;
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            margin: 0 auto 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
-            color: white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .header h1 {
-            font-size: 3.5em;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .header .subtitle {
-            font-size: 1.5em;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255,255,255,0.1);
-            padding: 10px 20px;
-            border-radius: 25px;
-            backdrop-filter: blur(10px);
-        }
-
-        .contact-item a {
-            color: white;
-            text-decoration: none;
-        }
-
-        /* Navigation */
-        .nav {
-            background: #34495e;
-            padding: 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .nav li {
-            margin: 0;
-        }
-
-        .nav a {
-            display: block;
-            padding: 20px 30px;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border-bottom: 3px solid transparent;
-        }
-
-        .nav a:hover {
-            background: #3498db;
-            border-bottom-color: #fff;
-        }
-
-        /* Sections */
-        .section {
-            padding: 80px 40px;
-        }
-
-        .section:nth-child(even) {
-            background: #f8f9fa;
-        }
-
-        .section-title {
-            font-size: 2.5em;
-            text-align: center;
-            margin-bottom: 50px;
-            color: #2c3e50;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, #3498db, #2c3e50);
-            border-radius: 2px;
-        }
-
-        /* Education */
-        .education-item {
-            background: white;
-            padding: 30px;
-            margin-bottom: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-left: 5px solid #3498db;
-        }
-
-        .education-item h3 {
-            color: #2c3e50;
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-
-        .education-item .degree {
-            color: #3498db;
-            font-weight: bold;
-            font-size: 1.2em;
-            margin-bottom: 5px;
-        }
-
-        .education-item .date-location {
-            color: #7f8c8d;
-            font-style: italic;
-        }
-
-        /* Skills */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .skill-category {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .skill-category h3 {
-            color: #2c3e50;
-            margin-bottom: 20px;
-            font-size: 1.3em;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        .skill-tag {
-            background: linear-gradient(45deg, #3498db, #2c3e50);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            font-weight: 500;
-        }
-
-        /* Experience */
-        .experience-item {
-            background: white;
-            padding: 40px;
-            margin-bottom: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .experience-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, #3498db, #2c3e50);
-        }
-
-        .experience-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .experience-title {
-            flex: 1;
-        }
-
-        .experience-title h3 {
-            color: #2c3e50;
-            font-size: 1.5em;
-            margin-bottom: 5px;
-        }
-
-        .company {
-            color: #3498db;
-            font-weight: bold;
-            font-size: 1.1em;
-        }
-
-        .date-location {
-            color: #7f8c8d;
-            font-style: italic;
-            text-align: right;
-        }
-
-        .achievements {
-            list-style: none;
-            padding: 0;
-        }
-
-        .achievements li {
-            margin-bottom: 15px;
-            padding-left: 25px;
-            position: relative;
-            line-height: 1.6;
-        }
-
-        .achievements li::before {
-            content: '▶';
-            position: absolute;
-            left: 0;
-            color: #3498db;
-            font-size: 0.8em;
-        }
-
-        /* Publications */
-        .publication-item {
-            background: white;
-            padding: 30px;
-            margin-bottom: 25px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-left: 5px solid #e74c3c;
-        }
-
-        .publication-item h3 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-
-        .publication-venue {
-            color: #e74c3c;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .publication-date {
-            color: #7f8c8d;
-            font-style: italic;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.5em;
-            }
-
-            .header .subtitle {
-                font-size: 1.2em;
-            }
-
-            .contact-info {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .nav ul {
-                flex-direction: column;
-            }
-
-            .section {
-                padding: 60px 20px;
-            }
-
-            .section-title {
-                font-size: 2em;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .experience-header {
-                flex-direction: column;
-            }
-
-            .date-location {
-                text-align: left;
-            }
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .section > * {
-            animation-delay: 0.1s;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 <body>
     <div class="container">
         <!-- Header -->
         <header class="header">
             <div class="header-content">
-                <div class="profile-img">
-                    <i class="fas fa-user"></i>
+                <div class="profile-section">
+                    <div class="profile-img-container">
+                        <div class="profile-img">
+                            <img src="assets\1751909282270.jpg" alt="Shammy Kumar" class="profile-img">
+                        </div>
+                    </div>
                 </div>
-                <h1>Shammy Kumar</h1>
-                <p class="subtitle">Software Engineer & Computer Engineering Graduate Student</p>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:shammykumarsbu27@gmail.com">shammykumarsbu27@gmail.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-linkedin"></i>
-                        <a href="#" target="_blank">LinkedIn</a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <a href="tel:+16319743701">+1 (631) 974-3701</a>
+                <div class="info-section">
+                    <h1>Shammy Kumar</h1>
+                    <p class="subtitle">Software Engineer & Computer Engineering Graduate Student</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:shammykumarsbu27@gmail.com">shammykumarsbu27@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:shammy.kumar@stonybrook.edu">shammy.kumar@stonybrook.edu</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <a href="#" target="_blank">LinkedIn Profile</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+16319743701">+1 (631) 974-3701</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -425,10 +48,10 @@
         <!-- Navigation -->
         <nav class="nav">
             <ul>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#publications">Publications</a></li>
+                <li><a href="#education" class="nav-item">Education</a></li>
+                <li><a href="#skills" class="nav-item">Skills</a></li>
+                <li><a href="#experience" class="nav-item">Experience</a></li>
+                <li><a href="#publications" class="nav-item">Publications</a></li>
             </ul>
         </nav>
 
@@ -437,7 +60,7 @@
             <h2 class="section-title fade-in">Education</h2>
             <div class="education-item fade-in">
                 <h3>Stony Brook University</h3>
-                <div class="degree">MS in Computer Engineering</div>
+                <div class="degree">MS in Computer Engineering (Relevant Coursework: Analysis of Algorithms, Data Science Fundamentals, Computer and Robot Vision)</div>
                 <div class="date-location">August 2025 – May 2027 | Stony Brook, NY, USA</div>
             </div>
             <div class="education-item fade-in">
@@ -545,94 +168,29 @@
             <h2 class="section-title fade-in">Publications</h2>
             
             <div class="publication-item fade-in">
-                <h3>Machine Learning Approaches for Entity Extraction from Citation Strings</h3>
-                <div class="publication-venue">Decision Intelligence, Lecture Notes in Electrical Engineering</div>
+               <a href="https://link.springer.com/chapter/10.1007/978-981-99-5997-6_25" class="paper-link"><h3>Machine Learning Approaches for Entity Extraction from Citation Strings</h3></a>
+                <div class="publication-venue">Springer, Decision Intelligence, Lecture Notes in Electrical Engineering</div>
                 <div class="publication-date">November 2023</div>
             </div>
 
             <div class="publication-item fade-in">
-                <h3>Rectangular Gate-All-Around Nanowire FET (RGAANFET) Based Oxygen Sensor</h3>
+                <a href="https://ieeexplore.ieee.org/document/9580086" class="paper-link"><h3>Rectangular Gate-All-Around Nanowire FET (RGAANFET) Based Oxygen Sensor</h3></a>
                 <div class="publication-venue">IEEE, 12th ICCNT at IIT Kharagpur</div>
                 <div class="publication-date">November 2021</div>
             </div>
 
             <div class="publication-item fade-in">
-                <h3>Ammonia Gas Sensor using In(1-x)Ga(x)As as Nanowire Material</h3>
+                <a href="https://ieeexplore.ieee.org/document/9225595" class="paper-link"><h3>Ammonia Gas Sensor using In(1-x)Ga(x)As as Nanowire Material</h3></a>
                 <div class="publication-venue">IEEE, 11th ICCNT at IIT Kharagpur</div>
                 <div class="publication-date">October 2020</div>
             </div>
 
             <div class="publication-item fade-in">
-                <h3>Gate Length Modulation of Junction-less Transistor Based on Silicon Nanowire</h3>
+                <a href="https://ieeexplore.ieee.org/document/8991491" class="paper-link"><h3>Gate Length Modulation of Junction-less Transistor Based on Silicon Nanowire</h3></a>
                 <div class="publication-venue">IEEE, ICon-CuTE at SRM Lucknow</div>
                 <div class="publication-date">February 2020</div>
             </div>
         </section>
     </div>
-
-    <script>
-        // Add fade-in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationDelay = '0s';
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all elements that should fade in
-        document.querySelectorAll('.education-item, .skill-category, .experience-item, .publication-item').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('.nav a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Active navigation highlighting
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav a');
-            
-            let currentSection = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                const sectionHeight = section.clientHeight;
-                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-                    currentSection = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + currentSection) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
-
-    <style>
-        .nav a.active {
-            background: #3498db;
-            border-bottom-color: #fff;
-        }
-    </style>
 </body>
 </html>
