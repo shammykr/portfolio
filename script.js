@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // }
 
 // fetchLeetCodeStats('shammykr');
-
+updateLeetCode();
 async function updateLeetCode() {
     try {
         // Cache-busting: adds a timestamp to force the browser to get the newest file
