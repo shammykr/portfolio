@@ -1,0 +1,28 @@
+name: Update LeetCode Stats
+on:
+  push:
+    branches:
+      - main # Or 'master', depending on your default branch name
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Fetch LeetCode JSON
+        run: |
+          # Ensure assets directory exists
+          mkdir -p assets
+          # Fetch your data and save it locally
+          curl "https://leetcode-stats-api.herokuapp.com/shammykr" > assets/leetcode.json
+          
+      - name: Commit and Push
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add assets/leetcode.json
+          git commit -m "Automated LeetCode stats update" || exit 0
+          git push

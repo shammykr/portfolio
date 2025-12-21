@@ -39,33 +39,59 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // --- 3. LEETCODE API INTEGRATION ---
-async function fetchLeetCodeStats(username) {
-    try {
-        const response = await fetch(`https://leetcode-stats-api.herokuapp.com/${username}`);
-        const data = await response.json();
+// async function fetchLeetCodeStats(username) {
+//     try {
+//         const response = await fetch(`https://leetcode-stats-api.herokuapp.com/${username}`);
+//         const data = await response.json();
 
+//         if (data.status === 'success') {
+//             // Update Numbers
+//             document.getElementById('lc-total').innerText = data.totalSolved;
+//             document.getElementById('lc-easy').innerText = data.easySolved;
+//             document.getElementById('lc-med').innerText = data.mediumSolved;
+//             document.getElementById('lc-hard').innerText = data.hardSolved;
+
+//             // Update Progress Bars (assuming standard target of 200/300/100 or adjust as needed)
+//             document.getElementById('lc-easy-bar').style.width = `${(data.easySolved / data.totalEasy) * 100}%`;
+//             document.getElementById('lc-med-bar').style.width = `${(data.mediumSolved / data.totalMedium) * 100}%`;
+//             document.getElementById('lc-hard-bar').style.width = `${(data.hardSolved / data.totalHard) * 100}%`;
+
+//             // Update Circular Ring
+//             const circle = document.getElementById('lc-progress-circle');
+//             const circumference = 326.7;
+//             const percent = (data.totalSolved / data.totalQuestions) * 100;
+//             const offset = circumference - (percent / 100 * circumference);
+//             circle.style.strokeDashoffset = offset;
+//         }
+//     } catch (error) {
+//         console.error("LeetCode API fail:", error);
+//     }
+// }
+
+// fetchLeetCodeStats('shammykr');
+
+async function updateLeetCode() {
+    try {
+        // Fetching from your own repository instead of an external API
+        const res = await fetch('./assets/leetcode.json');
+        const data = await res.json();
+        
         if (data.status === 'success') {
-            // Update Numbers
             document.getElementById('lc-total').innerText = data.totalSolved;
             document.getElementById('lc-easy').innerText = data.easySolved;
             document.getElementById('lc-med').innerText = data.mediumSolved;
             document.getElementById('lc-hard').innerText = data.hardSolved;
-
-            // Update Progress Bars (assuming standard target of 200/300/100 or adjust as needed)
+            
+            // Trigger UI animations for bars and ring
+            const ring = document.getElementById('lc-progress-circle');
+            const offset = 264 - (data.totalSolved / data.totalQuestions) * 264;
+            ring.style.strokeDashoffset = offset;
+            
             document.getElementById('lc-easy-bar').style.width = `${(data.easySolved / data.totalEasy) * 100}%`;
             document.getElementById('lc-med-bar').style.width = `${(data.mediumSolved / data.totalMedium) * 100}%`;
             document.getElementById('lc-hard-bar').style.width = `${(data.hardSolved / data.totalHard) * 100}%`;
-
-            // Update Circular Ring
-            const circle = document.getElementById('lc-progress-circle');
-            const circumference = 326.7;
-            const percent = (data.totalSolved / data.totalQuestions) * 100;
-            const offset = circumference - (percent / 100 * circumference);
-            circle.style.strokeDashoffset = offset;
         }
-    } catch (error) {
-        console.error("LeetCode API fail:", error);
+    } catch (e) {
+        console.error("Local stats fetch failed:", e);
     }
 }
-
-fetchLeetCodeStats('shammykr');

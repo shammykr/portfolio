@@ -139,17 +139,20 @@ body {
 }
 
 /* Highlight the Resume Button*/
+/* High-Visibility Call to Action */
 .resume-btn {
-    background: var(--accent) !important;
-    color: var(--bg-deep) !important;
-    font-weight: 700 !important;
+    background-color: #38bdf8 !important;
+    color: #0f172a !important;         
+    font-weight: 600 !important;
     border: none !important;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.6); /* Creates a "glow" effect */
+    transition: all 0.3s ease;
 }
 
 .resume-btn:hover {
-    filter: brightness(1.1);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.4);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.8);
+    filter: brightness(1.2);
 }
 
 /* Ensure the LeetCode icon (fas fa-code) looks consistent */
