@@ -72,26 +72,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function updateLeetCode() {
     try {
-        // Fetching from your own repository instead of an external API
-        const res = await fetch('./assets/leetcode.json');
-        const data = await res.json();
+        // Cache-busting: adds a timestamp to force the browser to get the newest file
+        const res = await fetch(`assets/leetcode.json?t=${new Date().getTime()}`);
+        if (!res.ok) throw new Error('Stats file not found');
         
-        if (data.status === 'success') {
-            document.getElementById('lc-total').innerText = data.totalSolved;
-            document.getElementById('lc-easy').innerText = data.easySolved;
-            document.getElementById('lc-med').innerText = data.mediumSolved;
-            document.getElementById('lc-hard').innerText = data.hardSolved;
-            
-            // Trigger UI animations for bars and ring
-            const ring = document.getElementById('lc-progress-circle');
-            const offset = 264 - (data.totalSolved / data.totalQuestions) * 264;
+        const data = await res.json();
+        console.log("Data fetched:", data);
+
+        // Map data directly to your UI elements
+        const solved = data.totalSolved;
+        const easy = data.easySolved;
+        const med = data.mediumSolved;
+        const hard = data.hardSolved;
+
+        // Update Text
+        document.getElementById('lc-total').innerText = solved;
+        document.getElementById('lc-easy').innerText = easy;
+        document.getElementById('lc-med').innerText = med;
+        document.getElementById('lc-hard').innerText = hard;
+
+        // Update Circular Ring (Circumference is 2 * PI * 42 approx 264)
+        const ring = document.getElementById('lc-progress-circle');
+        if (ring) {
+            const totalQuestions = data.totalQuestions;
+            const fraction = solved / totalQuestions;
+            const offset = 264 - (fraction * 264);
             ring.style.strokeDashoffset = offset;
-            
-            document.getElementById('lc-easy-bar').style.width = `${(data.easySolved / data.totalEasy) * 100}%`;
-            document.getElementById('lc-med-bar').style.width = `${(data.mediumSolved / data.totalMedium) * 100}%`;
-            document.getElementById('lc-hard-bar').style.width = `${(data.hardSolved / data.totalHard) * 100}%`;
         }
+
+        // Update Progress Bars using the totals from your JSON
+        document.getElementById('lc-easy-bar').style.width = `${(easy / data.totalEasy) * 100}%`;
+        document.getElementById('lc-med-bar').style.width = `${(med / data.totalMedium) * 100}%`;
+        document.getElementById('lc-hard-bar').style.width = `${(hard / data.totalHard) * 100}%`;
+
     } catch (e) {
-        console.error("Local stats fetch failed:", e);
+        console.error("LeetCode UI Update Error:", e);
     }
 }
