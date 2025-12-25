@@ -1,6 +1,26 @@
 let vantaEffect = null;
 
 document.addEventListener('DOMContentLoaded', () => {
+    const navbar = document.querySelector('.glass-nav');
+    let lastScrollTop = 0;
+    const scrollThreshold = 50; // Minimum scroll distance before hiding
+
+    window.addEventListener('scroll', () => {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Don't do anything for very small scrolls (prevents flickering)
+        if (Math.abs(lastScrollTop - scrollTop) <= scrollThreshold) return;
+
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // Scrolling Down - Hide Nav
+            navbar.classList.add('nav-hidden');
+        } else {
+            // Scrolling Up - Show Nav
+            navbar.classList.remove('nav-hidden');
+        }
+
+        lastScrollTop = scrollTop;
+    });
    const themeToggle = document.getElementById('theme-toggle');
     const icon = themeToggle.querySelector('i');
     const savedTheme = localStorage.getItem('theme') || 'dark';
