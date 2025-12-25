@@ -620,6 +620,7 @@ body {
 .tabs-content {
     flex-grow: 1;
     min-height: 0;
+    padding-top: 0;
 }
 
 .job-header {
@@ -630,6 +631,8 @@ body {
     font-size: 1.4rem;
     font-weight: 800; /* Thicker heading as requested */
     margin-bottom: 8px;
+    margin-top: 0;
+    line-height: 1.2;
 }
 .job-meta {
     display: flex;
