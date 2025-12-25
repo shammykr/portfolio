@@ -1,6 +1,32 @@
-let vantaEffect = null;
-
 document.addEventListener('DOMContentLoaded', () => {
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-tab');
+
+            // 1. Hide all panels and remove active states
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabPanels.forEach(p => {
+                p.classList.remove('active');
+                p.style.display = 'none';
+            });
+
+            // 2. Prepare the new panel
+            btn.classList.add('active');
+            const activePanel = document.getElementById(target);
+            
+            // Set display first so the height is calculated immediately
+            activePanel.style.display = 'block';
+            
+            // Force a layout reflow so the Projects section snaps to position
+            activePanel.offsetHeight; 
+
+            // Trigger the Fade & Slide animation
+            activePanel.classList.add('active');
+        });
+    });
     const navbar = document.querySelector('.glass-nav');
     let lastScrollTop = 0;
     const scrollThreshold = 50; // Minimum scroll distance before hiding
@@ -21,23 +47,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         lastScrollTop = scrollTop;
     });
-   const themeToggle = document.getElementById('theme-toggle');
+    const themeToggle = document.getElementById('theme-toggle');
     const icon = themeToggle.querySelector('i');
     const savedTheme = localStorage.getItem('theme') || 'dark';
 
     // Initial setup
     document.documentElement.setAttribute('data-theme', savedTheme);
     icon.className = savedTheme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
-    initVanta(savedTheme);
 
     themeToggle.addEventListener('click', () => {
         const currentTheme = document.documentElement.getAttribute('data-theme');
         const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
-        
+
         document.documentElement.setAttribute('data-theme', nextTheme);
         localStorage.setItem('theme', nextTheme);
         icon.className = nextTheme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
-        
+
         // RE-INITIALIZE VANTA with new colors
         initVanta(nextTheme);
     });
@@ -54,11 +79,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     // Animates all sections and cards on scroll
-    const scrollElements = document.querySelectorAll('.glass-card, .bento-item, .section-heading');
+    // Target specific sections rather than just every glass-card to keep the UI predictable
+    const scrollElements = document.querySelectorAll('#academic, #experience, #projects, #publications, .hero-card');
+
     scrollElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
-        el.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
         observer.observe(el);
     });
 });

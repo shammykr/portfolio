@@ -120,46 +120,114 @@
             </div>
         </section>
 
+        <!-- <section id="experience" class="content-section">
+            <h2 class="section-heading">Professional Experience</h2>
+
+            <div class="experience-timeline">
+
+                <div class="glass-card timeline-card" style="margin-bottom: 40px;">
+                    <div class="edu-header">
+                        <div class="header-text-group">
+                            <h4>Bank of America</h4>
+                            <span class="header-sub">| Software Engineer</span>
+                        </div>
+                        <span class="date-tag">Oct 2022 – Jul 2025</span>
+                    </div>
+                    <ul class="modern-list">
+                        <li>Architected the migration of a legacy UI to <strong>Angular 12</strong>, improving
+                            performance by 25% and reducing technical debt by 30% for a critical internal tax
+                            application.</li>
+                        <li>Partnered with cross-functional teams in an Agile environment to deliver <strong>90+ user
+                                stories</strong> for APAC tax systems, ensuring compliance with regional regulations.
+                        </li>
+                        <li>Implemented **Role-Based Access Control (RBAC)** and secured API endpoints, resolving over
+                            85% of security vulnerabilities identified during audits.</li>
+                        <li>Engineered reusable Angular components and services, reducing development time for new
+                            features by 20% and promoting code consistency across the platform.</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card timeline-card">
+                    <div class="edu-header">
+                        <div class="header-text-group">
+                            <h4>Infosys Ltd</h4>
+                            <span class="header-sub">| Senior Systems Engineer</span>
+                        </div>
+                        <span class="date-tag">Oct 2020 – Sep 2022</span>
+                    </div>
+                    <ul class="modern-list">
+                        <li>Spearheaded the transition of a monolithic application to a <strong>Microservices
+                                architecture</strong> using Java Spring Boot, improving system scalability by 2x.</li>
+                        <li>Optimized complex SQL queries and introduced database indexing, reducing average page load
+                            times by 40% for high-traffic modules.</li>
+                        <li>Developed and deployed CI/CD pipelines using Jenkins and Docker, cutting deployment time by
+                            50% and enabling daily production releases.</li>
+                        <li>Mentored 3 junior developers on best practices in Java development, code reviews, and
+                            microservices design patterns.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section> -->
+
+
         <section id="experience" class="content-section">
             <h2 class="section-heading">Professional Experience</h2>
 
-            <div class="glass-card">
-                <div class="card-header">
-                    <div>
-                        <h3>Bank of America <span class="meta-info">| Software Engineer</span></h3>
-                    </div>
-                    <div class="meta-info">Oct 2022 – Jul 2025 | Gurugram, India</div>
+            <div class="tabs-container">
+                <div class="tabs-sidebar" role="tablist">
+                    <button class="tab-btn active" data-tab="bofa">Bank of America</button>
+                    <button class="tab-btn" data-tab="infosys">Infosys Ltd</button>
                 </div>
-                <ul class="modern-list">
-                    <li>Architected migration of mission-critical legacy UI from AngularJS to <strong>Angular
-                            12</strong>, reducing technical debt by 30% and improving performance by 25%. </li>
-                    <li>Strengthened enterprise security via <strong>Role-Based Access Control (RBAC)</strong>,
-                        resolving 85% of vulnerabilities and ensuring 100% audit compliance. </li>
-                    <li>Optimized high-reliability financial modules using <strong>Spring Boot</strong>, achieving 90%+
-                        unit test coverage and decreasing production defects by 15%. </li>
-                    <li>Partnered with cross-functional teams to deliver <strong>90+ user stories</strong> for seamless
-                        tax payment processing across the APAC region. </li>
-                </ul>
-            </div>
 
-            <div class="glass-card">
-                <div class="card-header">
-                    <div>
-                        <h3>Infosys <span class="meta-info"> | Systems Engineer</span></h3>
+                <div class="tabs-content">
+                    <div class="tab-panel active" id="bofa" role="tabpanel">
+                        <div class="job-header">
+                            <h4>Software Engineer @ <span class="accent-text">Bank of America</span></h4>
+                            <div class="job-meta">
+                                <span class="date-tag">Oct 2022 – Jul 2025</span>
+                                <span class="location-tag"><i class="fas fa-location-dot"></i> Gurugram, India</span>
+                            </div>
+                        </div>
+                        <ul class="modern-list">
+                            <li>Architected migration of mission-critical legacy UI from AngularJS to <strong>Angular
+                                    12</strong>, reducing technical debt by 30% and improving performance by 25%. </li>
+                            <li>Strengthened enterprise security via <strong>Role-Based Access Control (RBAC)</strong>,
+                                resolving 85% of vulnerabilities and ensuring 100% audit compliance. </li>
+                            <li>Optimized high-reliability financial modules using <strong>Spring Boot</strong>,
+                                achieving 90%+
+                                unit test coverage and decreasing production defects by 15%. </li>
+                            <li>Partnered with cross-functional teams to deliver <strong>90+ user stories</strong> for
+                                seamless
+                                tax payment processing across the APAC region. </li>
+                        </ul>
                     </div>
-                    <div class="meta-info">Jan 2021 – Oct 2022 | Gurugram, India</div>
+
+                    <div class="tab-panel" id="infosys" role="tabpanel">
+                        <div class="job-header">
+                            <h4>Systems Engineer @ <span class="accent-text">Infosys</span></h4>
+                            <div class="job-meta">
+                                <span class="date-tag">Jan 2021 – Oct 2022</span>
+                                <span class="location-tag"><i class="fas fa-location-dot"></i> Gurugram, India</span>
+                            </div>
+                        </div>
+                        <ul class="modern-list">
+                            <li>Spearheaded the transition of a monolithic application to a <strong>Microservices
+                                    architecture</strong> using Java Spring Boot, improving system scalability by 2x.
+                            </li>
+                            <li>Optimized complex SQL queries and introduced database indexing, reducing average page
+                                load
+                                times by 40% for high-traffic modules.</li>
+                            <li>Developed and deployed CI/CD pipelines using Jenkins and Docker, cutting deployment time
+                                by
+                                50% and enabling daily production releases.</li>
+                            <li>Mentored 3 junior developers on best practices in Java development, code reviews, and
+                                microservices design patterns.</li>
+                        </ul>
+                    </div>
                 </div>
-                <ul class="modern-list">
-                    <li>Transitioned legacy monolithic app to <strong>Microservices architecture</strong>, reducing page
-                        load times by 40% and doubling system scalability. </li>
-                    <li>Boosted SQL database efficiency by 60% via strategic data segmentation and index tuning,
-                        significantly reducing query latency. </li>
-                    <li>Directed full-lifecycle QA and bug resolution for enterprise modules, resolving <strong>80+
-                            critical defects</strong>. </li>
-                </ul>
             </div>
         </section>
-
         <section id="projects" class="content-section">
             <h2 class="section-heading">Key Projects</h2>
             <div class="projects-grid">

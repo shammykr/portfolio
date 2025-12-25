@@ -466,3 +466,234 @@ body {
                 opacity 0.4s ease, 
                 background 0.4s ease;
 }
+
+/* --- Experience Timeline Layout --- */
+
+/* 1. The Container holding the main vertical line */
+.experience-timeline {
+    position: relative;
+    /* Creates space on the left for the line and dots */
+    padding-left: 40px;
+    /* The main vertical line, semi-transparent blue */
+    border-left: 2px solid rgba(56, 189, 248, 0.3);
+    margin-top: 30px;
+}
+
+/* 2. Adjusting the cards to fit the timeline */
+.timeline-card {
+    position: relative;
+    /* Ensures the card doesn't overlap the line area on mobile */
+    width: 100%; 
+}
+
+/* 3. The Glowing Timeline Dots (using pseudo-element) */
+.timeline-card::before {
+    content: '';
+    position: absolute;
+    /* Positioning: Centers the dot on the left border line */
+    left: -49px; /* -40px padding + -9px to center half of 18px width */
+    top: 30px;   /* Aligns roughly with the card header */
+    
+    /* Sizing and Shape */
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    
+    /* Styling: Cyan accent color with a glow */
+    background: var(--accent);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.8);
+    
+    /* Adds a small border matching the background color to create separation from the line */
+    border: 4px solid var(--bg-deep); 
+    z-index: 1;
+}
+
+/* 4. Mobile Responsiveness Adjustments */
+@media (max-width: 768px) {
+    .experience-timeline {
+        padding-left: 30px;
+    }
+
+    .timeline-card::before {
+        left: -39px; /* Adjust position for smaller padding */
+        width: 14px;
+        height: 14px;
+        top: 32px;
+        border-width: 3px;
+    }
+    
+    /* Adjust header layout on mobile for better fit */
+    .timeline-card .edu-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .timeline-card .date-tag {
+        align-self: flex-start;
+    }
+}
+
+/* --- Accordion Logic --- */
+.accordion-header {
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Hide content by default */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    opacity: 0;
+}
+
+/* Show content when active */
+.accordion-item.active .accordion-content {
+    max-height: 500px; /* Large enough to fit the list */
+    opacity: 1;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--glass-border);
+}
+
+/* Chevron Rotation */
+.accordion-icon {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    transition: transform 0.4s ease;
+}
+
+.accordion-item.active .accordion-icon {
+    transform: rotate(180deg);
+    color: var(--accent);
+}
+
+/* Hover state for the whole header */
+.accordion-header:hover h4 {
+    color: var(--accent);
+}
+
+/* --- Sidebar Tabs Layout --- */
+.tabs-container {
+    display: flex;
+    gap: 40px;
+    margin-top: 30px;
+    align-items: flex-start; /* Keeps the sidebar at the top */
+}
+
+/* Sidebar List */
+.tabs-sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    flex-shrink: 0;
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    border-left: 2px solid var(--glass-border); /* The vertical line */
+    padding: 15px 20px;
+    text-align: left;
+    font-family: var(--font-main);
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Active Tab Style (Matches reference image) */
+.tab-btn.active {
+    color: var(--accent);
+    background: rgba(56, 189, 248, 0.05);
+    border-left-color: var(--accent); /* Highlights the line */
+}
+
+.tab-btn:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-main);
+}
+
+/* Content Area */
+.tabs-content {
+    flex-grow: 1;
+    min-height: 0;
+}
+
+.job-header {
+    margin-bottom: 20px;
+}
+
+.job-header h4 {
+    font-size: 1.4rem;
+    font-weight: 800; /* Thicker heading as requested */
+    margin-bottom: 8px;
+}
+.job-meta {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.location-tag {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+}
+
+.accent-text { color: var(--accent); }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .tabs-container { flex-direction: column; }
+    .tabs-sidebar {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+        border-bottom: 2px solid var(--glass-border);
+    }
+    .tab-btn {
+        border-left: none;
+        border-bottom: 2px solid transparent;
+        white-space: nowrap;
+    }
+    .tab-btn.active {
+        border-left: none;
+        border-bottom-color: var(--accent);
+    }
+}
+/* --- Smooth Tab Transitions --- */
+.tab-panel {
+    display: none; /* Keeps it out of document flow when inactive */
+    opacity: 0;
+    position: relative;
+}
+
+.tab-panel.active {
+    display: block;
+    /* Triggers the entry animation */
+    animation: slideFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Keyframes for the "Slide & Fade" effect */
+@keyframes slideFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px); /* Starts slightly lower */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Slides up to its natural position */
+    }
+}
+
+/* Ensures the Projects section transitions its position smoothly */
+.content-section {
+    transition: margin 0.4s ease;
+}
