@@ -7,12 +7,14 @@
     <title>Shammy Kumar | Portfolio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 </head>
 
 <body>
+    <div id="vanta-bg"></div>
     <nav class="glass-nav">
         <ul class="nav-links">
-            <li><a href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li>
+            <li><a href="#academic"><i class="fas fa-graduation-cap"></i> Education</a></li>
             <li><a href="#skills"><i class="fas fa-bolt"></i> Skills</a></li>
             <li><a href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
             <li><a href="#projects"><i class="fas fa-folder-open"></i> Projects</a></li>
@@ -30,7 +32,7 @@
                     <img src="assets/1751909282270.jpg" alt="Shammy Kumar" class="modern-avatar">
                 </div>
                 <div class="hero-right">
-                    <span class="badge">MS Computer Engineering @ Stony Brook</span>
+                    <span class="badge">MS Computer Engineering @ Stony Brook University</span>
                     <h1>Shammy Kumar</h1>
                     <div class="social-chips">
                         <a href="mailto:shammykumarsbu27@gmail.com" class="chip"><i class="fas fa-envelope"></i>
@@ -39,8 +41,8 @@
                                 class="fab fa-linkedin"></i> LinkedIn</a>
                         <a href="https://github.com/shammykr" target="_blank" class="chip"><i class="fab fa-github"></i>
                             GitHub</a>
-                        <span class="chip-static"><i class="fas fa-phone"></i> +1 (631) 974-3701</span>
-                        <span class="chip-static"><i class="fas fa-location-dot"></i> Stony Brook, NY</span>
+                        <span class="chip"><i class="fas fa-phone"></i> +1 (631) 974-3701</span>
+                        <span class="chip"><i class="fas fa-location-dot"></i> Stony Brook, NY</span>
                         <a href="assets/Shammy_Kumar_Resume.pdf" class="chip resume-btn" download><i
                                 class="fas fa-file-pdf"></i> Download Resume</a>
                     </div>
@@ -103,10 +105,6 @@
                     <a href="https://leetcode.com/u/shammykr/" target="_blank" class="chip mini-chip">View Profile <i
                             class="fas fa-external-link-alt"></i></a>
                 </div>
-                <!-- <div class="bento-item">
-                    <h3><i class="fas fa-layer-group"></i> Frameworks</h3>
-                    <p>Spring Boot, React, Angular 12, Node.js, Express, JUnit, Mockito</p>
-                </div> -->
                 <div class="bento-item">
                     <h3><i class="fas fa-cloud"></i> DevOps & Cloud</h3>
                     <p>AWS, GCP, Azure, Docker, Jenkins, CI/CD, GitHub Actions, SonarQube</p>
@@ -128,8 +126,7 @@
             <div class="glass-card">
                 <div class="card-header">
                     <div>
-                        <h3>Software Engineer</h3>
-                        <p class="company-name">Bank of America</p>
+                        <h3>Bank of America <span class="meta-info">| Software Engineer</span></h3>
                     </div>
                     <div class="meta-info">Oct 2022 – Jul 2025 | Gurugram, India</div>
                 </div>
@@ -148,8 +145,7 @@
             <div class="glass-card">
                 <div class="card-header">
                     <div>
-                        <h3>Systems Engineer</h3>
-                        <p class="company-name">Infosys</p>
+                        <h3>Infosys <span class="meta-info"> | Systems Engineer</span></h3>
                     </div>
                     <div class="meta-info">Jan 2021 – Oct 2022 | Gurugram, India</div>
                 </div>
@@ -201,31 +197,53 @@
             </div>
         </section>
 
+
         <section id="academic" class="content-section">
-            <h2 class="section-heading">Education & Research</h2>
-            <div class="dual-grid">
-                <div class="glass-card">
-                    <h3>Education</h3>
-                    <div class="edu-item">
-                        <h4>Stony Brook University</h4>
-                        <p>MS in Computer Engineering | <strong>CGPA: 3.78</strong></p>
-                        <span class="date-badge">Aug 2025 – May 2027</span>
-                    </div>
-                    <div class="edu-item">
-                        <h4>Guru Gobind Singh Indraprastha University</h4>
-                        <p>B.Tech in Electrical & Electronics Engineering | <strong>CGPA: 7.85</strong></p>
-                        <span class="date-badge">Aug 2016 – Sep 2020</span>
+            <h2 class="section-heading">Education</h2>
+            <div class="glass-card">
+                <div class="edu-item">
+                    <div class="edu-header">
+                        <div class="header-text-group">
+                            <h4>Stony Brook University, New York</h4>
+                            <div class="edu-sub">MS in Computer Engineering | <strong>CGPA: 3.78</strong></div>
+                        </div>
+                        <span class="date-tag">Aug 2025 – May 2027</span>
                     </div>
                 </div>
-                <div class="glass-card">
-                    <h3>Research Publications</h3>
-                    <div class="edu-item">
+
+                <div class="edu-item">
+                    <div class="edu-header">
+                        <div class="header-text-group">
+                            <h4>Guru Gobind Singh Indraprastha University, Delhi</h4>
+                            <div class="edu-sub">B.Tech in Electrical & Electronics Engineering | <strong>CGPA:
+                                    7.85</strong></div>
+                        </div>
+                        <div class="header-actions">
+                            <a href="https://drive.google.com/file/d/1_l_0rOdOhaBlctwI_x5zHTSslqxeiT6k/view?usp=drive_link"
+                                target="_blank" class="view-degree-btn">View Degree
+                            </a>
+                            <span class="date-tag">Aug 2016 – Sep 2020</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="publications" class="content-section">
+            <h2 class="section-heading">Research Publication</h2>
+            <div class="glass-card">
+                <div class="pub-item">
+                    <div class="edu-header">
                         <a href="https://link.springer.com/chapter/10.1007/978-981-99-5997-6_25" target="_blank"
-                            style="color: inherit; text-decoration: none;">
+                            class="pub-link">
+                            <i class="fas fa-link"></i>
                             <h4>Machine Learning Approaches for Entity Extraction</h4>
-                            <p>Decision Intelligence, Springer</p>
-                            <span class="date-badge">Nov 2023</span>
                         </a>
+                        <span class="date-tag">Nov 2023</span>
+                    </div>
+                    <div class="edu-sub">Decision Intelligence, Springer</div>
+                    <div class="tag-cloud">
+                        <span>SciBERT</span><span>NER</span><span>Model Training</span>
                     </div>
                 </div>
             </div>

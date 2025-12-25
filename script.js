@@ -1,21 +1,26 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // --- 1. THEME TOGGLE LOGIC ---
-    const themeToggle = document.getElementById('theme-toggle');
-    const icon = themeToggle.querySelector('i');
+let vantaEffect = null;
 
-    const currentTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    icon.className = currentTheme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+document.addEventListener('DOMContentLoaded', () => {
+   const themeToggle = document.getElementById('theme-toggle');
+    const icon = themeToggle.querySelector('i');
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+
+    // Initial setup
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    icon.className = savedTheme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+    initVanta(savedTheme);
 
     themeToggle.addEventListener('click', () => {
-        let theme = document.documentElement.getAttribute('data-theme');
-        let nextTheme = theme === 'light' ? 'dark' : 'light';
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
         
         document.documentElement.setAttribute('data-theme', nextTheme);
         localStorage.setItem('theme', nextTheme);
         icon.className = nextTheme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+        
+        // RE-INITIALIZE VANTA with new colors
+        initVanta(nextTheme);
     });
-
     // --- 2. SCROLL REVEAL ANIMATION ---
     const observerOptions = { threshold: 0.1 };
 
@@ -75,7 +80,7 @@ async function updateLeetCode() {
         // Cache-busting: adds a timestamp to force the browser to get the newest file
         const res = await fetch(`assets/leetcode.json?t=${new Date().getTime()}`);
         if (!res.ok) throw new Error('Stats file not found');
-        
+
         const data = await res.json();
         console.log("Data fetched:", data);
 

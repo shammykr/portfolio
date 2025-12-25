@@ -58,17 +58,40 @@ body {
 }
 
 .nav-links a {
-    color: var(--text-dim);
+    color: var(--text-main);
     text-decoration: none;
     font-size: 0.85rem;
     font-weight: 500;
-    transition: 0.3s;
-    white-space: nowrap;
+    
+    padding: 6px 16px; 
+    
+    border-radius: 50px; 
+    
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid transparent;
 }
 
-.nav-links a:hover { color: var(--accent); }
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    
+    transform: translateY(-4px) scale(1.05);
+    color: var(--accent) !important;
+    
+    box-shadow: 0 8px 20px rgba(56, 189, 248, 0.3);
+}
 
-/* Theme Button */
+[data-theme="light"] .nav-links a:hover {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(2, 132, 199, 0.15);
+}
+
 .theme-btn {
     background: none;
     border: 1px solid var(--glass-border);
@@ -79,7 +102,6 @@ body {
     transition: 0.3s;
 }
 
-/* Wrapper and Dashboard Sections */
 .main-wrapper { max-width: 1100px; margin: 0 auto; padding: 20px; }
 
 .hero-card {
@@ -99,16 +121,14 @@ body {
 .chip, .chip-static { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); padding: 6px 14px; border-radius: 12px; font-size: 0.8rem; color: var(--text-dim); text-decoration: none; }
 .chip:hover { color: var(--accent); border-color: var(--accent); }
 
-/* Bento Grid and Skills */
 .bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
 .bento-item { background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: 24px; padding: 20px; }
 .skills-main { grid-column: span 2; }
 
-/* FIX: Skills Tag Colors */
 .tag-cloud { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
 .tag-cloud span {
-    background: rgba(56, 189, 248, 0.15); /* Light blue bg */
-    color: var(--accent); /* Cyan text */
+    background: rgba(56, 189, 248, 0.15); 
+    color: var(--accent); 
     padding: 6px 14px;
     border-radius: 10px;
     font-size: 0.85rem;
@@ -244,4 +264,191 @@ body {
 
 @media (max-width: 480px) {
     .lc-stats-container { flex-direction: column; }
+}
+
+/* --- Education & Publication Layout --- */
+.edu-header {
+    display: flex;
+    justify-content: space-between; /* Pushes date tag to the far right */
+    align-items: flex-start;        /* Aligns date with the top of the thick heading */
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+/* Vertical Stack for School Name and Degree/GPA */
+.header-text-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Thick Heading Style (800 Weight) */
+.header-text-group h4 {
+    font-size: 1.3rem;
+    font-weight: 800; 
+    margin: 0;
+    color: var(--text-main);
+}
+
+/* Degree and GPA Info sits directly below */
+.edu-sub {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-dim);
+}
+
+.edu-sub strong {
+    color: var(--accent); /* Makes your CGPA stand out */
+    font-weight: 600;
+}
+
+/* Professional Right-Aligned Date Tag */
+.date-tag {
+    background: rgba(56, 189, 248, 0.1); 
+    color: var(--accent);
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    white-space: nowrap;
+}
+
+/* Space between education entries */
+.edu-item {
+    margin-bottom: 30px;
+}
+
+.edu-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Container for Icon + Title */
+.pub-link {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Space between the link icon and your title */
+    text-decoration: none !important; /* REMOVES BLUE UNDERLINE */
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+/* Ensure the thick heading inside the link has no underline */
+.pub-link h4 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 800; /* Maintains the thickness you requested */
+    text-decoration: none !important;
+}
+
+/* Specific icon styling */
+.pub-link i {
+    font-size: 0.9rem;
+    color: var(--accent); /* Uses your cyan dashboard color */
+}
+
+/* Hover effect: Subtle color change instead of an underline */
+.pub-link:hover h4 {
+    color: var(--accent);
+}
+
+/* Right-aligned date tag remains pinned to the right side */
+.edu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.view-badge {
+    font-size: 0.65rem;
+    background: rgba(56, 189, 248, 0.15); /* Accent tint */
+    color: var(--accent);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0.7; /* Subtle until hover */
+    transition: 0.3s;
+}
+.pub-link:hover .view-badge {
+    opacity: 1;
+    background: var(--accent);
+    color: var(--bg-deep);
+}
+/* Container to keep button and date side-by-side */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Premium Glass Button for View Degree */
+.view-degree-btn {
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    color: var(--accent);
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+}
+
+.view-degree-btn i {
+    font-size: 0.9rem;
+}
+
+/* High-contrast Hover effect */
+.view-degree-btn:hover {
+    background: var(--accent);
+    color: var(--bg-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(56, 189, 248, 0.4);
+}
+
+/* Light Mode Adjustment */
+[data-theme="light"] .view-degree-btn:hover {
+    color: #fff;
+}
+
+/* --- Refined iOS-Style Glass Navigation --- */
+.glass-nav {
+    position: sticky;
+    top: 15px;
+    z-index: 1000;
+    
+    /* Heavy saturation and blur for the "Frosted" look */
+    background: var(--nav-bg); 
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    
+    /* Thin, high-contrast border for definition */
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    
+    margin: 15px auto;
+    width: 90%;
+    max-width: 1000px;
+    padding: 8px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    /* Subtle outer shadow for depth */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Light Mode specific refinements */
+[data-theme="light"] .glass-nav {
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
 }
