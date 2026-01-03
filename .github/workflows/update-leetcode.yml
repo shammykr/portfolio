@@ -4,7 +4,7 @@ on:
     branches:
       - main # Or 'master', depending on your default branch name
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: '0 */72 * * *'
   workflow_dispatch:
 jobs:
   update-stats:
