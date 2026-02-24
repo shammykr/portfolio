@@ -1,24 +1,35 @@
 name: Update LeetCode Stats
+
 on:
   push:
-    branches:
-      - main # Or 'master', depending on your default branch name
+    branches: [ main ]
   schedule:
-    - cron: '0 */72 * * *'
+    - cron: "0 0 */3 * *"   # every 3 days at 00:00 UTC
   workflow_dispatch:
+
+permissions:
+  contents: write
+
 jobs:
   update-stats:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Fetch LeetCode JSON
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Fetch LeetCode JSON (same schema)
         run: |
-          # Ensure assets directory exists
-          mkdir -p assets
-          # Fetch your data and save it locally
-          curl "https://leetcode-stats-api.herokuapp.com/shammykr" > assets/leetcode.json
-          
+          python scripts/fetch_leetcode_schema.py shammykr
+          test -f assets/leetcode.tmp.json
+          mv assets/leetcode.tmp.json assets/leetcode.json
+
       - name: Commit and Push
         run: |
           git config --local user.email "action@github.com"
